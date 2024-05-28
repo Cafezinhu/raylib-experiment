@@ -3,6 +3,11 @@
 #include <stdio.h>
 #include <string.h>
 
+#if defined(PLATFORM_DESKTOP)
+#define GLSL_VERSION 330
+#else // PLATFORM_ANDROID, PLATFORM_WEB
+#define GLSL_VERSION 100
+#endif
 #if defined(PLATFORM_WEB)
 #include <emscripten/emscripten.h>
 #endif
@@ -30,7 +35,8 @@ int main() {
 #endif
 
   boat = LoadModel("boat-sail-a.glb");
-  shader = LoadShader("shaders/luz.vert", "shaders/luz.frag");
+  shader = LoadShader(TextFormat("shaders/glsl%i/luz.vert", GLSL_VERSION),
+                      TextFormat("shaders/glsl%i/luz.frag", GLSL_VERSION));
   int objectColorLoc = GetShaderLocation(shader, "objectColor");
   int lightColorLoc = GetShaderLocation(shader, "lightColor");
   int lightPosLoc = GetShaderLocation(shader, "lightPos");

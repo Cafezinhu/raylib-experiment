@@ -27,7 +27,7 @@ cp assets/icon_hdpi.png android/build/res/drawable-hdpi/icon.png
 cp assets/icon_xhdpi.png android/build/res/drawable-xhdpi/icon.png
 
 # Copy other assets
-cp assets/* android/build/assets
+cp -r assets/* android/build/assets
 
 # ______________________________________________________________________________
 #

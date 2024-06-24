@@ -63,7 +63,7 @@ int main() {
       (Vector3){0.0f, 1.0f, 0.0f}; // Camera up vector (rotation towards target)
   camera.fovy = 45.0f;             // Camera field-of-view Y
   camera.projection = CAMERA_PERSPECTIVE; // Camera projection type
-  DisableCursor();
+  // DisableCursor();
   SetExitKey(0);
 
   SetTargetFPS(60);
@@ -85,7 +85,7 @@ int main() {
 
 void UpdateDrawFrame() {
   if (IsCursorHidden())
-    UpdateCamera(&camera, CAMERA_FREE);
+    UpdateCamera(&camera, CAMERA_ORBITAL);
   // float cameraPos[3] = {camera.position.x, camera.position.y,
   //                       camera.position.z};
   // SetShaderValue(shader, shader.locs[SHADER_LOC_VECTOR_VIEW], cameraPos,
